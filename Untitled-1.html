@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        #btn,
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .btn {
+            width: 550px;
+            height: 50px;
+            font-size: larger;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn" id="btn1">Click To Change BackGround Color</button>
+    <button class="btn" id="btn2">Click To Change Gradient Color</button>
+    <script>
+        var btn1 = document.getElementById('btn1')
+        btn1.addEventListener("click", () => {
+            let body = document.body;
+            body.style.background = "none";
+            body.style.backgroundColor = color()
+            // btn1.textContent+=" "+color()
+        })
+
+        var btn2 = document.getElementById('btn2')
+        btn2.addEventListener("click", () => {
+            let body = document.body;
+            body.style.backgroundColor = "transparent";
+            body.style.background = getRandomGradient();
+            // btn1.textContent+=" "+color()
+        })
+        function getRandomGradient() {
+            const color1 = '#' + Math.random().toString(16).substring(2, 8);
+            const color2 = '#' + Math.random().toString(16).substring(2, 8);
+            return `radial-gradient(circle, ${color1}, ${color2})`;
+        }
+        function color() {
+            return '#' + Math.random().toString(16).substring(2, 8);
+        }
+    </script>
+
+</body>
+
+</html>
